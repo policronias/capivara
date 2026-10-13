@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capivara 2 — baixar</title>
+<meta name="description" content="Capivara 2: programa gratuito para historiadores organizarem fontes primárias, sozinhos ou em equipe. Baixe o instalador para Windows.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --papel: #F4EFE4; --cartao: #FBF8F1; --tinta: #1D1B17; --tinta2: #4A463E; --fio: #D9D1BF;
+    --rio: #17564D; --rio-texto: #FFFFFF; --barro: #B8652F; --aviso-bg: #FBEEDC;
+    --janela: #FFFFFF; --janela-tinta: #1D1B17; --janela-faixa: #17564D;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --papel: #1A1916; --cartao: #23211D; --tinta: #EDE8DC; --tinta2: #B9B2A3; --fio: #3A3731;
+      --rio: #5FB3A3; --rio-texto: #10201D; --barro: #E39B5A; --aviso-bg: #2E261C;
+      --janela: #2A2824; --janela-tinta: #EDE8DC; --janela-faixa: #2F6F64;
+    }
+  }
+  :root[data-theme="dark"] {
+    --papel: #1A1916; --cartao: #23211D; --tinta: #EDE8DC; --tinta2: #B9B2A3; --fio: #3A3731;
+    --rio: #5FB3A3; --rio-texto: #10201D; --barro: #E39B5A; --aviso-bg: #2E261C;
+    --janela: #2A2824; --janela-tinta: #EDE8DC; --janela-faixa: #2F6F64;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--papel); color: var(--tinta);
+         font: 17px/1.6 "IBM Plex Sans", system-ui, sans-serif; }
+  .folha { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  a { color: var(--rio); }
+  h1, h2, h3 { font-family: "Newsreader", Georgia, serif; font-weight: 600; line-height: 1.2; margin: 0; }
+  h2 { font-size: 30px; margin-bottom: 18px; }
+  h3 { font-size: 21px; margin-bottom: 6px; }
+  p { margin: 0 0 12px; }
+  .rotulo { font-family: "IBM Plex Mono", monospace; font-size: 13px; letter-spacing: .08em;
+            text-transform: uppercase; color: var(--rio); }
+  .corpo { fill: var(--rio); } .cabeca { fill: var(--barro); }
+  section { padding: 44px 0; border-top: 1px solid var(--fio); }
+
+  /* Topo */
+  header { padding: 40px 0 44px; }
+  .marca { display: flex; align-items: center; gap: 14px; }
+  .marca svg { width: 64px; height: 64px; flex: none; }
+  .nome { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 34px; color: var(--rio); }
+  .nome b { color: var(--barro); font-weight: 500; }
+  header h1 { font-size: clamp(30px, 6vw, 46px); margin: 26px 0 12px; max-width: 18ch; }
+  .lead { font-size: 19px; color: var(--tinta2); max-width: 60ch; }
+  .baixar { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 26px; }
+  .botao { display: inline-block; background: var(--rio); color: var(--rio-texto); text-decoration: none;
+           font-weight: 600; font-size: 18px; padding: 14px 24px; border: 2px solid var(--rio); }
+  .botao:hover, .botao:focus-visible { background: transparent; color: var(--rio); outline: none; }
+  .botao2 { display: inline-block; color: var(--rio); text-decoration: none; font-weight: 600;
+            padding: 12px 18px; border: 2px solid var(--rio); }
+  .botao2:hover, .botao2:focus-visible { background: var(--rio); color: var(--rio-texto); outline: none; }
+  .ficha { font-family: "IBM Plex Mono", monospace; font-size: 14px; color: var(--tinta2); margin-top: 14px; }
+
+  /* Passos */
+  .passo { display: grid; grid-template-columns: 44px 1fr; gap: 0 16px; margin-bottom: 34px; }
+  .num { width: 44px; height: 44px; background: var(--rio); color: var(--rio-texto);
+         font-family: "IBM Plex Mono", monospace; font-size: 20px; display: grid; place-items: center; }
+  .passo > div:last-child { min-width: 0; }
+  .aviso { background: var(--aviso-bg); border: 1px solid var(--barro); padding: 14px 16px; margin: 14px 0; }
+  .aviso p:last-child { margin: 0; }
+  .clique { font-weight: 600; white-space: nowrap; }
+  .clique::before { content: "›"; color: var(--barro); margin-right: 4px; }
+
+  /* Ilustração esquemática de uma janela (não é cópia da tela do Windows) */
+  .ilustra { margin: 16px 0 6px; max-width: 460px; border: 1px solid var(--fio); background: var(--janela);
+             color: var(--janela-tinta); font-size: 15px; }
+  .ilustra .faixa { background: var(--janela-faixa); color: #fff; padding: 14px 18px; }
+  .ilustra .faixa strong { display: block; font-size: 18px; font-family: "IBM Plex Sans", sans-serif; }
+  .ilustra .meio { padding: 14px 18px; }
+  .ilustra .alvo { outline: 3px solid var(--barro); outline-offset: 2px; }
+  .ilustra .link { text-decoration: underline; }
+  .ilustra .rodape { display: flex; justify-content: flex-end; gap: 10px; padding: 0 18px 16px; }
+  .ilustra .bt { border: 1px solid var(--fio); padding: 6px 14px; background: var(--cartao); }
+  .legenda { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--tinta2); }
+
+  /* Blocos */
+  .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .cartao { background: var(--cartao); border: 1px solid var(--fio); padding: 18px 20px; }
+  .cartao p:last-child { margin: 0; }
+  ul.lista { padding-left: 20px; margin: 0; } ul.lista li { margin-bottom: 8px; }
+  details { background: var(--cartao); border: 1px solid var(--fio); padding: 14px 18px; margin-top: 16px; }
+  summary { cursor: pointer; font-weight: 600; }
+  code { font-family: "IBM Plex Mono", monospace; font-size: 13px; word-break: break-all;
+         background: var(--papel); padding: 2px 4px; }
+  footer { border-top: 1px solid var(--fio); padding: 28px 0 48px; color: var(--tinta2); font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="folha">
+
+<header>
+  <div class="marca">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true"><path class="corpo" d="M21.43 25.55h6.04v6.04h-6.04zM28.57 25.55h6.04v6.04h-6.04zM35.71 25.55h6.04v6.04h-6.04zM42.86 25.55h6.04v6.04h-6.04zM50.00 25.55h6.04v6.04h-6.04zM57.14 25.55h6.04v6.04h-6.04zM64.29 25.55h6.04v6.04h-6.04zM14.29 32.69h6.04v6.04h-6.04zM21.43 32.69h6.04v6.04h-6.04zM28.57 32.69h6.04v6.04h-6.04zM35.71 32.69h6.04v6.04h-6.04zM42.86 32.69h6.04v6.04h-6.04zM50.00 32.69h6.04v6.04h-6.04zM57.14 32.69h6.04v6.04h-6.04zM64.29 32.69h6.04v6.04h-6.04zM7.14 39.84h6.04v6.04h-6.04zM14.29 39.84h6.04v6.04h-6.04zM21.43 39.84h6.04v6.04h-6.04zM28.57 39.84h6.04v6.04h-6.04zM35.71 39.84h6.04v6.04h-6.04zM42.86 39.84h6.04v6.04h-6.04zM50.00 39.84h6.04v6.04h-6.04zM57.14 39.84h6.04v6.04h-6.04zM64.29 39.84h6.04v6.04h-6.04zM7.14 46.98h6.04v6.04h-6.04zM14.29 46.98h6.04v6.04h-6.04zM21.43 46.98h6.04v6.04h-6.04zM28.57 46.98h6.04v6.04h-6.04zM35.71 46.98h6.04v6.04h-6.04zM42.86 46.98h6.04v6.04h-6.04zM50.00 46.98h6.04v6.04h-6.04zM57.14 46.98h6.04v6.04h-6.04zM64.29 46.98h6.04v6.04h-6.04zM7.14 54.12h6.04v6.04h-6.04zM14.29 54.12h6.04v6.04h-6.04zM21.43 54.12h6.04v6.04h-6.04zM28.57 54.12h6.04v6.04h-6.04zM35.71 54.12h6.04v6.04h-6.04zM42.86 54.12h6.04v6.04h-6.04zM50.00 54.12h6.04v6.04h-6.04zM57.14 54.12h6.04v6.04h-6.04zM64.29 54.12h6.04v6.04h-6.04zM71.43 54.12h6.04v6.04h-6.04zM14.29 61.26h6.04v6.04h-6.04zM21.43 61.26h6.04v6.04h-6.04zM28.57 61.26h6.04v6.04h-6.04zM35.71 61.26h6.04v6.04h-6.04zM42.86 61.26h6.04v6.04h-6.04zM50.00 61.26h6.04v6.04h-6.04zM57.14 61.26h6.04v6.04h-6.04zM64.29 61.26h6.04v6.04h-6.04zM71.43 61.26h6.04v6.04h-6.04zM14.29 68.41h6.04v6.04h-6.04zM21.43 68.41h6.04v6.04h-6.04zM57.14 68.41h6.04v6.04h-6.04zM64.29 68.41h6.04v6.04h-6.04zM14.29 75.55h6.04v6.04h-6.04zM21.43 75.55h6.04v6.04h-6.04zM57.14 75.55h6.04v6.04h-6.04zM64.29 75.55h6.04v6.04h-6.04z"/><path class="cabeca" d="M64.29 18.41h6.04v6.04h-6.04zM71.43 25.55h6.04v6.04h-6.04zM78.57 25.55h6.04v6.04h-6.04zM85.71 25.55h6.04v6.04h-6.04zM71.43 32.69h6.04v6.04h-6.04zM85.71 32.69h6.04v6.04h-6.04zM92.86 32.69h6.04v6.04h-6.04zM71.43 39.84h6.04v6.04h-6.04zM78.57 39.84h6.04v6.04h-6.04zM85.71 39.84h6.04v6.04h-6.04zM92.86 39.84h6.04v6.04h-6.04zM71.43 46.98h6.04v6.04h-6.04zM78.57 46.98h6.04v6.04h-6.04zM85.71 46.98h6.04v6.04h-6.04zM92.86 46.98h6.04v6.04h-6.04zM78.57 54.12h6.04v6.04h-6.04zM85.71 54.12h6.04v6.04h-6.04zM78.57 61.26h6.04v6.04h-6.04z"/></svg>
+    <span class="nome">capivara<b>2</b></span>
+  </div>
+  <h1>Organize suas fontes primárias, sozinho ou em equipe.</h1>
+  <p class="lead">Fichas com metadados editáveis, transcrição ao lado da imagem, etiquetas, marcações, buscas e
+    análises do conjunto das fontes. Gratuito, em português, e tudo fica no seu computador ou na pasta de nuvem
+    da sua equipe.</p>
+  <div class="baixar">
+    <a class="botao" href="https://github.com/policronias/capivara/releases/latest/download/Capivara2_Instalador.exe">Baixar para Windows</a>
+    <a class="botao2" href="https://github.com/policronias/capivara/releases/latest/download/Manual_Capivara2.pdf">Manual (PDF)</a>
+  </div>
+  <p class="ficha">Versão 2.0.0-beta.6 (teste) · 128 MB · Windows 10 e 11 (64 bits)</p>
+</header>
+
+<section id="instalar">
+  <p class="rotulo">Instalação</p>
+  <h2>Instalar em quatro passos</h2>
+  <p>Não é preciso instalar mais nada antes (nem Python, nem outros programas). O Windows vai mostrar um ou dois
+    avisos no caminho: eles são esperados, e abaixo explicamos o que clicar.</p>
+
+  <div class="passo"><div class="num">1</div><div>
+    <h3>Baixe o instalador</h3>
+    <p>Clique em <strong>Baixar para Windows</strong>, no alto desta página. O arquivo se chama
+      <code>Capivara2_Instalador.exe</code> e vai para a pasta <strong>Downloads</strong>.</p>
+    <div class="aviso">
+      <p><strong>Se o navegador avisar</strong> que o arquivo “não é baixado com frequência” ou “pode ser
+        perigoso”:</p>
+      <p>No <strong>Edge</strong>: passe o mouse sobre o aviso, clique nos três pontinhos
+        <span class="clique">Manter</span>, depois <span class="clique">Mostrar mais</span> e
+        <span class="clique">Manter mesmo assim</span>.<br>
+        No <strong>Chrome</strong>: clique em <span class="clique">Manter</span> (ou
+        <span class="clique">Baixar arquivo suspeito</span>).</p>
+    </div>
+  </div></div>
+
+  <div class="passo"><div class="num">2</div><div>
+    <h3>Abra o instalador e passe pelo aviso do Windows</h3>
+    <p>Dê dois cliques no arquivo baixado. O Windows deve mostrar uma janela azul dizendo
+      <strong>“O Windows protegeu o computador”</strong>, sem nenhum botão para continuar. Não feche a janela:</p>
+    <div class="ilustra" role="img" aria-label="Ilustração: na janela de aviso, clique primeiro em Mais informações e depois em Executar assim mesmo.">
+      <div class="faixa"><strong>O Windows protegeu o computador</strong>
+        O SmartScreen impediu a inicialização de um aplicativo não reconhecido…<br>
+        <span class="link alvo">Mais informações</span></div>
+      <div class="meio">Aplicativo: Capivara2_Instalador.exe<br>Editor: Editor desconhecido</div>
+      <div class="rodape"><span class="bt alvo">Executar assim mesmo</span><span class="bt">Não executar</span></div>
+    </div>
+    <p class="legenda">Ilustração simplificada · os contornos marcam onde clicar</p>
+    <p>Clique em <span class="clique">Mais informações</span> (o texto sublinhado). Aparece então o botão
+      <span class="clique">Executar assim mesmo</span>: clique nele.</p>
+  </div></div>
+
+  <div class="passo"><div class="num">3</div><div>
+    <h3>Siga o assistente de instalação</h3>
+    <p>Clique em <span class="clique">Avançar</span> até o fim. Se quiser, marque
+      “Criar um atalho na Área de Trabalho”. O instalador não pede senha de administrador.</p>
+  </div></div>
+
+  <div class="passo"><div class="num">4</div><div>
+    <h3>Abra o Capivara 2</h3>
+    <p>Na primeira vez, ele pergunta o seu nome (é assim que a equipe sabe quem fez o quê) e mostra um guia
+      rápido. Para experimentar sem medo, escolha <strong>Arquivo › Criar projeto de exemplo</strong>.
+      O programa também fica no menu Iniciar, com o manual ao lado.</p>
+  </div></div>
+</section>
+
+<section id="aviso">
+  <p class="rotulo">Sobre o aviso</p>
+  <h2>Por que o Windows mostra esse aviso?</h2>
+  <p>O Windows avisa sobre qualquer programa que não tenha uma <strong>assinatura digital</strong>, um certificado
+    comprado de uma empresa e renovado todo ano. O Capivara é um projeto acadêmico gratuito e, por enquanto, não tem
+    esse certificado. O aviso quer dizer apenas “não sei quem fez este programa”, e não que o programa seja perigoso.</p>
+  <p>O Capivara não envia suas fontes para a internet: tudo fica no seu computador ou na pasta de nuvem que você
+    escolher. O único download feito pelo programa é o dos modelos de transcrição de áudio, e só se você pedir.</p>
+  <div class="aviso">
+    <p><strong>Computador da universidade ou do trabalho sem o botão “Executar assim mesmo”?</strong> Nesses
+      computadores, quem decide o que pode ser instalado é o setor de informática. Envie a eles o link desta
+      página e peça a instalação do Capivara 2.</p>
+  </div>
+  <details>
+    <summary>Para quem quer conferir se o arquivo é o original</summary>
+    <p style="margin-top:12px">Esta é a “impressão digital” (SHA-256) do instalador da versão 2.0.0-beta.6:</p>
+    <p><code>F0AF3A97B4D49859C0369C0A6C36FAB61566FA6C334D18400D9ED1ACA25A0C6B</code></p>
+    <p>Para conferir, abra o PowerShell na pasta Downloads e digite
+      <code>Get-FileHash Capivara2_Instalador.exe</code>. Os dois códigos devem ser iguais.</p>
+  </details>
+</section>
+
+<section id="saber">
+  <p class="rotulo">Bom saber</p>
+  <h2>Antes de começar</h2>
+  <div class="grade">
+    <div class="cartao"><h3>Trabalhar em equipe</h3>
+      <p>A equipe compartilha a pasta do projeto pelo OneDrive, Google Drive ou Dropbox. O passo a passo está
+        no próprio programa: <strong>Ajuda › Como trabalhar em equipe</strong>.</p></div>
+    <div class="cartao"><h3>Vem do Capivara 1?</h3>
+      <p>Use <strong>Arquivo › Migrar projeto do Capivara 1…</strong>. O projeto antigo não é alterado: o
+        Capivara 2 cria uma cópia nova.</p></div>
+    <div class="cartao"><h3>Versão nova</h3>
+      <p>Baixe de novo por esta página e instale por cima da anterior. Seus projetos não são afetados,
+        porque ficam nas pastas que você escolheu.</p></div>
+  </div>
+</section>
+
+<section id="requisitos">
+  <p class="rotulo">Requisitos</p>
+  <h2>O que é preciso</h2>
+  <ul class="lista">
+    <li>Computador com <strong>Windows 10 ou 11</strong>, de 64 bits. Uma versão para Mac está em preparação.</li>
+    <li>Cerca de <strong>500 MB</strong> livres para o programa, além do espaço dos seus projetos.</li>
+    <li>Para trabalhar em equipe: OneDrive, Google Drive para computador ou Dropbox instalado.</li>
+    <li>Texto de imagens (OCR): usa os idiomas instalados no Windows (o português já vem nos computadores em
+      português).</li>
+    <li>Transcrição de áudio e vídeo: na primeira vez, o programa baixa um modelo de transcrição (o tamanho
+      aparece antes). Depois, funciona sem internet.</li>
+  </ul>
+</section>
+
+<section id="ajuda">
+  <p class="rotulo">Ajuda</p>
+  <h2>Dúvidas e problemas</h2>
+  <p>Consulte primeiro o <a href="https://github.com/policronias/capivara/releases/latest/download/Manual_Capivara2.pdf">manual</a>
+    (também na tecla F1, dentro do programa). Se algo der errado, abra <strong>Ajuda › Informações para
+    suporte…</strong>, clique em copiar e envie o texto para <a href="mailto:policroniasdopresente@gmail.com">policroniasdopresente@gmail.com</a>.</p>
+</section>
+
+<footer>
+  Capivara 2 · Projeto <strong>Policronias do Presente</strong> · Universidade do Estado de Santa Catarina (UDESC) ·
+  Walderez Ramalho
+</footer>
+
+</div>
+</body>
+</html>
