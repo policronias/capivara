@@ -73,6 +73,18 @@
   .aviso { background: var(--aviso-bg); border: 1px solid var(--barro); padding: 14px 16px; margin: 0 0 26px; }
   .aviso p:last-child { margin: 0; }
 
+  /* Sumário */
+  .sumario { background: var(--cartao); border: 1px solid var(--fio); padding: 16px 22px; margin: 0 0 26px; }
+  .sumario h3 { font-size: 19px; margin-bottom: 8px; }
+  .sumario ol { list-style: none; margin: 0; padding: 0; }
+  .sumario li { border-top: 1px solid var(--fio); }
+  .sumario li:first-child { border-top: 0; }
+  .sumario a { display: flex; gap: 14px; align-items: baseline; padding: 8px 0; color: var(--tinta); text-decoration: none; }
+  .sumario a:hover .t, .sumario a:focus-visible .t { color: var(--rio); text-decoration: underline; }
+  .sumario .n { font-family: "IBM Plex Mono", monospace; font-size: 14px; color: var(--barro); min-width: 3ch; }
+  .sumario .t { flex: 1; font-weight: 600; }
+  .sumario .d { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--tinta2); }
+
   /* Vídeos */
   .video { background: var(--cartao); border: 1px solid var(--fio); padding: 20px 22px; margin-bottom: 26px; scroll-margin-top: 16px; }
   .video h3 a { color: var(--tinta); text-decoration: none; }
@@ -96,7 +108,8 @@
   <h1>Vídeos para aprender o Capivara 2.</h1>
   <p class="lead">Passo a passo, em português, com legendas e transcrição. Cada vídeo tem poucos minutos.</p>
   <div class="baixar">
-    <a class="botao2" href="../">Baixar o programa</a>
+    <a class="botao" href="https://github.com/policronias/capivara/releases/latest/download/Capivara2_Instalador.exe">Baixar o programa</a>
+    <a class="botao2" href="../">Página inicial do Capivara</a>
   </div>
 </header>
 
@@ -104,6 +117,13 @@
   <p class="rotulo">Vídeos</p>
   <h2>Tutoriais</h2>
   <div class="aviso"><p>Gravados na versão 2.1.0-beta.1; em versões novas algumas telas podem ser diferentes.</p></div>
+  <nav class="sumario" aria-label="Sumário dos vídeos"><h3>Neste conjunto</h3><ol>
+<li><a href="#instalacao"><span class="n">01</span><span class="t">Instalação e primeira abertura</span><span class="d">1:20</span></a></li>
+<li><a href="#primeiros-passos"><span class="n">02</span><span class="t">Primeiros passos: o projeto de exemplo</span><span class="d">1:48</span></a></li>
+<li><a href="#criar-e-abrir-projeto"><span class="n">03</span><span class="t">Criar e abrir um projeto</span><span class="d">1:36</span></a></li>
+<li><a href="#importar-planilha"><span class="n">04</span><span class="t">Importar uma planilha</span><span class="d">3:27</span></a></li>
+<li><a href="#projeto-novo-de-planilha"><span class="n">04b</span><span class="t">Criar um projeto novo a partir de uma planilha</span><span class="d">3:06</span></a></li>
+</ol></nav>
   <article class="video" id="instalacao">
   <p class="rotulo">Vídeo 01</p>
   <h3><a href="#instalacao">Instalação e primeira abertura</a></h3>
