@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capivara 2 — vídeos</title>
+<meta name="description" content="Vídeos-tutorial do Capivara 2: instalação, primeiros passos, projetos e importação de planilhas. Em português, com legendas e transcrição.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --papel: #F4EFE4; --cartao: #FBF8F1; --tinta: #1D1B17; --tinta2: #4A463E; --fio: #D9D1BF;
+    --rio: #17564D; --rio-texto: #FFFFFF; --barro: #B8652F; --aviso-bg: #FBEEDC;
+    --janela: #FFFFFF; --janela-tinta: #1D1B17; --janela-faixa: #17564D;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --papel: #1A1916; --cartao: #23211D; --tinta: #EDE8DC; --tinta2: #B9B2A3; --fio: #3A3731;
+      --rio: #5FB3A3; --rio-texto: #10201D; --barro: #E39B5A; --aviso-bg: #2E261C;
+      --janela: #2A2824; --janela-tinta: #EDE8DC; --janela-faixa: #2F6F64;
+    }
+  }
+  :root[data-theme="dark"] {
+    --papel: #1A1916; --cartao: #23211D; --tinta: #EDE8DC; --tinta2: #B9B2A3; --fio: #3A3731;
+    --rio: #5FB3A3; --rio-texto: #10201D; --barro: #E39B5A; --aviso-bg: #2E261C;
+    --janela: #2A2824; --janela-tinta: #EDE8DC; --janela-faixa: #2F6F64;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--papel); color: var(--tinta);
+         font: 17px/1.6 "IBM Plex Sans", system-ui, sans-serif; }
+  .folha { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  a { color: var(--rio); }
+  h1, h2, h3 { font-family: "Newsreader", Georgia, serif; font-weight: 600; line-height: 1.2; margin: 0; }
+  h2 { font-size: 30px; margin-bottom: 18px; }
+  h3 { font-size: 21px; margin-bottom: 6px; }
+  p { margin: 0 0 12px; }
+  .rotulo { font-family: "IBM Plex Mono", monospace; font-size: 13px; letter-spacing: .08em;
+            text-transform: uppercase; color: var(--rio); }
+  .corpo { fill: var(--rio); } .cabeca { fill: var(--barro); }
+  section { padding: 44px 0; border-top: 1px solid var(--fio); }
+
+  /* Topo */
+  header { padding: 40px 0 44px; }
+  .marca { display: flex; align-items: center; gap: 14px; }
+  .marca svg { width: 64px; height: 64px; flex: none; }
+  .nome { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 34px; color: var(--rio); }
+  .nome b { color: var(--barro); font-weight: 500; }
+  header h1 { font-size: clamp(30px, 6vw, 46px); margin: 26px 0 12px; max-width: 18ch; }
+  .lead { font-size: 19px; color: var(--tinta2); max-width: 60ch; }
+  .baixar { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 26px; }
+  .botao { display: inline-block; background: var(--rio); color: var(--rio-texto); text-decoration: none;
+           font-weight: 600; font-size: 18px; padding: 14px 24px; border: 2px solid var(--rio); }
+  .botao:hover, .botao:focus-visible { background: transparent; color: var(--rio); outline: none; }
+  .botao2 { display: inline-block; color: var(--rio); text-decoration: none; font-weight: 600;
+            padding: 12px 18px; border: 2px solid var(--rio); }
+  .botao2:hover, .botao2:focus-visible { background: var(--rio); color: var(--rio-texto); outline: none; }
+  .ficha { font-family: "IBM Plex Mono", monospace; font-size: 14px; color: var(--tinta2); margin-top: 14px; }
+
+  /* Blocos */
+  .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .cartao { background: var(--cartao); border: 1px solid var(--fio); padding: 18px 20px; }
+  .cartao p:last-child { margin: 0; }
+  ul.lista { padding-left: 20px; margin: 0; } ul.lista li { margin-bottom: 8px; }
+  details { background: var(--cartao); border: 1px solid var(--fio); padding: 14px 18px; margin-top: 16px; }
+  summary { cursor: pointer; font-weight: 600; }
+  code { font-family: "IBM Plex Mono", monospace; font-size: 13px; word-break: break-all;
+         background: var(--papel); padding: 2px 4px; }
+  footer { border-top: 1px solid var(--fio); padding: 28px 0 48px; color: var(--tinta2); font-size: 15px; }
+
+  .aviso { background: var(--aviso-bg); border: 1px solid var(--barro); padding: 14px 16px; margin: 0 0 26px; }
+  .aviso p:last-child { margin: 0; }
+
+  /* Vídeos */
+  .video { background: var(--cartao); border: 1px solid var(--fio); padding: 20px 22px; margin-bottom: 26px; scroll-margin-top: 16px; }
+  .video h3 a { color: var(--tinta); text-decoration: none; }
+  .video h3 a:hover, .video h3 a:focus-visible { color: var(--rio); text-decoration: underline; }
+  .video .ficha { margin: 0 0 14px; }
+  .video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--tinta); border: 1px solid var(--fio); margin-bottom: 14px; }
+  .video details { background: var(--papel); }
+  .video details p { font-size: 16px; }
+  .vazio { color: var(--tinta2); font-size: 19px; }
+  .voltar { margin: 0 0 8px; }
+</style>
+</head>
+<body>
+<div class="folha">
+
+<header>
+  <div class="marca">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true"><path class="corpo" d="M21.43 25.55h6.04v6.04h-6.04zM28.57 25.55h6.04v6.04h-6.04zM35.71 25.55h6.04v6.04h-6.04zM42.86 25.55h6.04v6.04h-6.04zM50.00 25.55h6.04v6.04h-6.04zM57.14 25.55h6.04v6.04h-6.04zM64.29 25.55h6.04v6.04h-6.04zM14.29 32.69h6.04v6.04h-6.04zM21.43 32.69h6.04v6.04h-6.04zM28.57 32.69h6.04v6.04h-6.04zM35.71 32.69h6.04v6.04h-6.04zM42.86 32.69h6.04v6.04h-6.04zM50.00 32.69h6.04v6.04h-6.04zM57.14 32.69h6.04v6.04h-6.04zM64.29 32.69h6.04v6.04h-6.04zM7.14 39.84h6.04v6.04h-6.04zM14.29 39.84h6.04v6.04h-6.04zM21.43 39.84h6.04v6.04h-6.04zM28.57 39.84h6.04v6.04h-6.04zM35.71 39.84h6.04v6.04h-6.04zM42.86 39.84h6.04v6.04h-6.04zM50.00 39.84h6.04v6.04h-6.04zM57.14 39.84h6.04v6.04h-6.04zM64.29 39.84h6.04v6.04h-6.04zM7.14 46.98h6.04v6.04h-6.04zM14.29 46.98h6.04v6.04h-6.04zM21.43 46.98h6.04v6.04h-6.04zM28.57 46.98h6.04v6.04h-6.04zM35.71 46.98h6.04v6.04h-6.04zM42.86 46.98h6.04v6.04h-6.04zM50.00 46.98h6.04v6.04h-6.04zM57.14 46.98h6.04v6.04h-6.04zM64.29 46.98h6.04v6.04h-6.04zM7.14 54.12h6.04v6.04h-6.04zM14.29 54.12h6.04v6.04h-6.04zM21.43 54.12h6.04v6.04h-6.04zM28.57 54.12h6.04v6.04h-6.04zM35.71 54.12h6.04v6.04h-6.04zM42.86 54.12h6.04v6.04h-6.04zM50.00 54.12h6.04v6.04h-6.04zM57.14 54.12h6.04v6.04h-6.04zM64.29 54.12h6.04v6.04h-6.04zM71.43 54.12h6.04v6.04h-6.04zM14.29 61.26h6.04v6.04h-6.04zM21.43 61.26h6.04v6.04h-6.04zM28.57 61.26h6.04v6.04h-6.04zM35.71 61.26h6.04v6.04h-6.04zM42.86 61.26h6.04v6.04h-6.04zM50.00 61.26h6.04v6.04h-6.04zM57.14 61.26h6.04v6.04h-6.04zM64.29 61.26h6.04v6.04h-6.04zM71.43 61.26h6.04v6.04h-6.04zM14.29 68.41h6.04v6.04h-6.04zM21.43 68.41h6.04v6.04h-6.04zM57.14 68.41h6.04v6.04h-6.04zM64.29 68.41h6.04v6.04h-6.04zM14.29 75.55h6.04v6.04h-6.04zM21.43 75.55h6.04v6.04h-6.04zM57.14 75.55h6.04v6.04h-6.04zM64.29 75.55h6.04v6.04h-6.04z"/><path class="cabeca" d="M64.29 18.41h6.04v6.04h-6.04zM71.43 25.55h6.04v6.04h-6.04zM78.57 25.55h6.04v6.04h-6.04zM85.71 25.55h6.04v6.04h-6.04zM71.43 32.69h6.04v6.04h-6.04zM85.71 32.69h6.04v6.04h-6.04zM92.86 32.69h6.04v6.04h-6.04zM71.43 39.84h6.04v6.04h-6.04zM78.57 39.84h6.04v6.04h-6.04zM85.71 39.84h6.04v6.04h-6.04zM92.86 39.84h6.04v6.04h-6.04zM71.43 46.98h6.04v6.04h-6.04zM78.57 46.98h6.04v6.04h-6.04zM85.71 46.98h6.04v6.04h-6.04zM92.86 46.98h6.04v6.04h-6.04zM78.57 54.12h6.04v6.04h-6.04zM85.71 54.12h6.04v6.04h-6.04zM78.57 61.26h6.04v6.04h-6.04z"/></svg>
+    <span class="nome">capivara<b>2</b></span>
+  </div>
+  <h1>Vídeos para aprender o Capivara 2.</h1>
+  <p class="lead">Passo a passo, em português, com legendas e transcrição. Cada vídeo tem poucos minutos.</p>
+  <div class="baixar">
+    <a class="botao2" href="../">Baixar o programa</a>
+  </div>
+</header>
+
+<section id="videos">
+  <p class="rotulo">Vídeos</p>
+  <h2>Tutoriais</h2>
+  <div class="aviso"><p>Gravados na versão 2.1.0-beta.1; em versões novas algumas telas podem ser diferentes.</p></div>
+  <article class="video" id="instalacao">
+  <p class="rotulo">Vídeo 01</p>
+  <h3><a href="#instalacao">Instalação e primeira abertura</a></h3>
+  <p class="ficha">Duração 1:20 · gravado na versão 2.1.0-beta.1 · No manual: capítulo 2</p>
+  <video controls preload="none" poster="01-instalacao/capa.jpg" src="01-instalacao/video.mp4"></video>
+  <p>Como baixar o instalador, passar pelo aviso do Windows, seguir o assistente e abrir o Capivara 2 pela primeira vez.</p>
+  <p class="legenda"><a href="01-instalacao/video.mp4" download>Baixar este vídeo (MP4)</a></p>
+  <details><summary>Transcrição</summary>
+<p>O Capivara 2 funciona no Windows 10 ou 11, de 64 bits, e ocupa cerca de quinhentos megabytes. Não é preciso instalar Python nem outro programa. Baixe o instalador na página do projeto e dê dois cliques no arquivo Capivara2_Instalador.</p>
+<p>O Windows pode mostrar o aviso: O Windows protegeu o computador. Isso acontece porque o programa ainda não tem assinatura digital. Clique em Mais informações e depois em Executar assim mesmo.</p>
+<p>Siga o assistente. A instalação é por usuário e não pede senha de administrador. Se quiser, marque o atalho na Área de Trabalho e clique em Concluir. O programa também aparece no menu Iniciar.</p>
+<p>Na primeira vez, o Capivara pergunta: Quem é você? Digite o seu nome e sobrenome. Ele identifica as suas edições no histórico e nos avisos para os colegas. Use sempre o mesmo nome, em todos os computadores: Ana Souza e ana souza seriam vistas como pessoas diferentes.</p>
+<p>Pronto, o Capivara está aberto. Para um roteiro de um minuto, abra o menu Ajuda e escolha Guia rápido. Ele reúne seis passos para começar. Se um dia precisar trocar o nome, use o menu Arquivo, Alterar usuário.</p>
+<p>Para conhecer o programa por dentro, veja o vídeo Primeiros passos. O manual completo está no menu Ajuda, ou na tecla F1.</p>
+</details>
+</article>
+<article class="video" id="primeiros-passos">
+  <p class="rotulo">Vídeo 02</p>
+  <h3><a href="#primeiros-passos">Primeiros passos: o projeto de exemplo</a></h3>
+  <p class="ficha">Duração 1:48 · gravado na versão 2.1.0-beta.1 · No manual: seções 4.1, 4.5, 6.1</p>
+  <video controls preload="none" poster="02-primeiros-passos/capa.jpg" src="02-primeiros-passos/video.mp4"></video>
+  <p>Um passeio pelo programa com o projeto de exemplo: tela inicial, aba Projeto, aba Edição, aba Analítica e os atalhos Ctrl+1, Ctrl+2 e Ctrl+3.</p>
+  <p class="legenda"><a href="02-primeiros-passos/video.mp4" download>Baixar este vídeo (MP4)</a></p>
+  <details><summary>Transcrição</summary>
+<p>Este é o Capivara 2, um programa para organizar, descrever e transcrever fontes primárias, e para trabalhar em equipe. Ao abrir, você vê a tela inicial: três botões à esquerda, Novo projeto, Abrir projeto e Importar. À direita aparecem os projetos usados recentemente; enquanto não houver nenhum, o programa mostra os primeiros passos.</p>
+<p>A forma mais rápida de conhecer o programa é criar o projeto de exemplo. Abra o menu Arquivo, escolha Criar projeto de exemplo e indique uma pasta. Ele traz doze documentos fictícios, como cartas, um ofício, uma fotografia, um jornal e uma ata, com imagens, transcrições, etiquetas e comentários. Você pode editar à vontade.</p>
+<p>Pronto. Esta é a aba Projeto: a lista de todas as entradas. Cada entrada é um documento descrito no projeto, como uma carta, uma fotografia ou um número de jornal.</p>
+<p>Para abrir uma entrada, dê dois cliques nela. A aba Edição reúne, lado a lado, tudo o que é preciso para descrever e transcrever uma fonte. À esquerda, os metadados. No centro, a fonte digitalizada. À direita, a transcrição, as notas, os comentários, as relações e as marcações.</p>
+<p>O Capivara tem três abas, no alto da janela: Projeto, Edição e Analítica. Você alterna entre elas com Ctrl+1, Ctrl+2 e Ctrl+3.</p>
+<p>A aba Analítica mostra o conjunto do projeto. Na lateral, ficam os painéis: visão geral, cruzamentos, linha do tempo, texto e redes. Ela só lê os seus dados, sem alterar nada, e respeita os filtros da aba Projeto.</p>
+<p>Nos próximos vídeos, vamos ver cada parte com calma. O manual completo está no menu Ajuda, ou na tecla F1.</p>
+</details>
+</article>
+<article class="video" id="criar-e-abrir-projeto">
+  <p class="rotulo">Vídeo 03</p>
+  <h3><a href="#criar-e-abrir-projeto">Criar e abrir um projeto</a></h3>
+  <p class="ficha">Duração 1:36 · gravado na versão 2.1.0-beta.1 · No manual: seções 4.2, 4.3</p>
+  <video controls preload="none" poster="03-criar-e-abrir-projeto/capa.jpg" src="03-criar-e-abrir-projeto/video.mp4"></video>
+  <p>Como criar um projeto novo (nome, pasta e modelo), fechá-lo e abri-lo de novo, inclusive pelos projetos recentes.</p>
+  <p class="legenda"><a href="03-criar-e-abrir-projeto/video.mp4" download>Baixar este vídeo (MP4)</a></p>
+  <details><summary>Transcrição</summary>
+<p>Para começar uma pesquisa do zero, clique em Novo projeto, ou use Ctrl+Shift+N. Também dá para usar o menu Arquivo.</p>
+<p>Primeiro, dê um nome ao projeto. Depois, escolha a pasta onde ele será criado. Se vocês forem trabalhar em equipe, escolha uma pasta sincronizada, por exemplo dentro do OneDrive.</p>
+<p>Em seguida, escolha o modelo que mais se parece com a sua pesquisa. Há modelos para correspondência, imprensa, história oral, fotografias e outros. Um modelo define os campos, os status e algumas etiquetas de exemplo. É só um ponto de partida: depois, você muda o que quiser. Na dúvida, escolha Em branco.</p>
+<p>Clique em Criar projeto. Pronto: o projeto está aberto, ainda sem entradas.</p>
+<p>Para fechar o projeto e voltar à tela inicial, use Ctrl+W. Repare que o projeto ficou na lista de recentes, com o número de entradas.</p>
+<p>Para abrir um projeto que já existe, clique em Abrir projeto, ou use Ctrl+O. O Capivara pergunta o que você quer abrir: a pasta de um projeto do Capivara 2, ou um arquivo do Capivara 1, que será convertido para uma pasta nova, sem alterar o original. Quem recebe um projeto compartilhado abre pela pasta que aparece no seu computador depois da sincronização.</p>
+<p>O jeito mais rápido de voltar a um projeto é pelos recentes: na tela inicial, ou no menu Arquivo, em Abrir recente.</p>
+<p>No próximo vídeo, vamos importar uma planilha. O manual completo está no menu Ajuda, ou na tecla F1.</p>
+</details>
+</article>
+<article class="video" id="importar-planilha">
+  <p class="rotulo">Vídeo 04</p>
+  <h3><a href="#importar-planilha">Importar uma planilha</a></h3>
+  <p class="ficha">Duração 3:27 · gravado na versão 2.1.0-beta.1 · No manual: seções 4.4, 11.2, 11.3</p>
+  <video controls preload="none" poster="04-importar-planilha/capa.jpg" src="04-importar-planilha/video.mp4"></video>
+  <p>Como trazer uma planilha (Excel ou CSV) para um projeto que já existe: conferir as colunas, ver a prévia e importar sem duplicar.</p>
+  <p class="legenda"><a href="04-importar-planilha/video.mp4" download>Baixar este vídeo (MP4)</a></p>
+  <details><summary>Transcrição</summary>
+<p>Antes de importar, vale preparar a planilha. A primeira linha deve ter os nomes das colunas. Cada linha abaixo é um documento, e cada coluna é uma informação sobre ele, como título, autor, data e local. O Capivara aceita planilhas do Excel e arquivos csv. Não se preocupe com os nomes das colunas: o programa entende nomes parecidos com os campos do projeto.</p>
+<p>Com o projeto de exemplo aberto, abra o menu Arquivo e escolha Importar. O atalho é Ctrl+I. Na janela que aparece, clique em Arquivo e escolha a planilha.</p>
+<p>Como já existe um projeto aberto, o Capivara faz uma única pergunta: criar um projeto novo, ou trazer a planilha para este projeto. Clique em Trazer para este projeto.</p>
+<p>Agora o Capivara liga as colunas sozinho. No alto, ele resume o que encontrou: sete colunas casaram com campos do projeto, e duas viram campos novos. A lista mostra, coluna por coluna, para onde cada informação vai. Autor entra em Criador. Palavras-chave vira etiquetas. Doador, que o projeto não tinha, vira um campo novo.</p>
+<p>Não concordou com alguma ligação? Clique em Ajustar colunas. Cada coluna da planilha aparece com exemplos do que ela contém, e uma caixa para escolher onde ela entra: em um campo do projeto, em um campo novo, ou em lugar nenhum. Nesta planilha, a coluna Conferido por é um controle interno. Vamos escolher Não importar esta coluna. Se a planilha tiver várias abas, esta caixa, no alto, permite escolher a aba. Depois, clique em Usar estas escolhas.</p>
+<p>De volta à confirmação, o Capivara só faz perguntas quando elas se aplicam. Aqui, ele achou NA numa célula. Isso costuma querer dizer sem informação, e, se você responder sim, a célula fica vazia. Também há uma linha sem título, e ele oferece montar um título para ela. Todas as respostas começam em Não: quem decide é você. Quando estiver tudo certo, clique em Continuar. Nada foi gravado até agora.</p>
+<p>Veja a prévia: cinco entradas novas, que serão adicionadas, e nenhuma que já esteja no projeto. O programa também diz qual campo novo será criado: o Doador. Clique em Importar.</p>
+<p>Pronto! As cinco entradas já estão na lista. As datas, até as incertas, como cerca de 1920, foram entendidas, e as etiquetas, separadas por ponto e vírgula, viraram etiquetas de verdade. Se não gostar do resultado, Ctrl+Z desfaz a importação inteira.</p>
+<p>Corrigiu a planilha e quer importá-la de novo? Sem problema. Se você disser quais colunas identificam cada linha, como o título, o Capivara reconhece o que já está no projeto e atualiza só o que mudou, sem duplicar. Células em branco nunca apagam nada. E se você tem uma pasta de imagens ou de PDFs, escolha Pasta, na mesma janela. O Capivara cria as entradas de uma vez, agrupando as páginas de cada documento.</p>
+<p>E se ainda não existe projeto? Na tela inicial, clique em Importar e escolha a planilha. Agora o Capivara oferece criar um projeto novo, cujos campos nascem das colunas da planilha. Basta dar um nome, escolher a pasta e clicar em Criar projeto. Aqui, vamos só olhar a tela, sem criar nada.</p>
+<p>No próximo vídeo, vamos ver a aba Projeto: buscar, filtrar e agir em várias entradas de uma vez. O manual completo está no menu Ajuda, ou na tecla F1.</p>
+</details>
+</article>
+<article class="video" id="projeto-novo-de-planilha">
+  <p class="rotulo">Vídeo 04b</p>
+  <h3><a href="#projeto-novo-de-planilha">Criar um projeto novo a partir de uma planilha</a></h3>
+  <p class="ficha">Duração 3:06 · gravado na versão 2.1.0-beta.1 · No manual: seção 4.4</p>
+  <video controls preload="none" poster="04b-projeto-novo-de-planilha/capa.jpg" src="04b-projeto-novo-de-planilha/video.mp4"></video>
+  <p>Como criar um projeto novo a partir de uma planilha: os campos nascem das colunas, o programa reconhece os tipos e faz só as perguntas necessárias.</p>
+  <p class="legenda"><a href="04b-projeto-novo-de-planilha/video.mp4" download>Baixar este vídeo (MP4)</a></p>
+  <details><summary>Transcrição</summary>
+<p>No vídeo anterior, a planilha entrou num projeto que já existia. Agora, vamos fazer o contrário: criar um projeto novo, cujos campos nascem das colunas da planilha. Na tela inicial, clique em Importar e, depois, em Arquivo. Escolha a planilha. Como não há projeto aberto, o Capivara entende que você quer criar um projeto.</p>
+<p>Esta é a tela de confirmação. No alto, o Capivara conta o que leu: seis linhas e dez colunas. Cada coluna vira um campo do projeto, com o mesmo nome. A lista mostra três coisas: o nome da coluna, o tipo que o programa reconheceu e o papel que ela terá.</p>
+<p>Veja os tipos. As datas da entrevista viram data histórica, que aceita datas incertas. Colunas com poucos valores diferentes, como o município, viram lista de opções. O resto vira texto. Alguns papéis são especiais: Palavras-chave vira etiquetas, Situação vira o andamento, e Observações vira as notas. O título de cada entrada vem da coluna Entrevistado.</p>
+<p>Depois, o Capivara faz perguntas, mas só quando elas se aplicam. Ele achou NA em duas células. Isso costuma querer dizer sem informação. Vamos responder Sim: essas células ficam vazias. A coluna do título está vazia em uma linha. Vamos responder Sim também, para ele montar um título. Mais abaixo, o Capivara avisa que reconhece cada linha pela coluna Código. Assim, se você importar a planilha de novo, nada se duplica.</p>
+<p>Agora, o nome do projeto e a pasta. Digite um nome. Em seguida, clique em Escolher e indique a pasta. Se ela estiver no OneDrive, no Google Drive ou no Dropbox, o programa lembra que dá para compartilhar o projeto com a equipe.</p>
+<p>Quer rever tudo com calma? Clique em Ajustar colunas. Cada linha é uma coluna da planilha. Em Importar, você marca se ela entra ou não. Em Entra como, escolhe se ela vira um campo, ou etiquetas, notas e andamento. Em Nome do campo, muda o nome. E em Tipo, escolhe o tipo. Aqui, vamos mudar a Duração para Número. No alto, você escolhe a coluna do título. Mais abaixo, ficam as escolhas da planilha inteira: os valores vazios, o título padrão e as colunas que identificam cada linha. Quando terminar, clique em Usar estas escolhas.</p>
+<p>Tudo certo? Clique em Criar projeto. O Capivara cria a pasta, os campos e uma entrada para cada linha. Pronto: o projeto abriu, com as seis entrevistas. No alto, uma faixa lembra que você ainda pode ajustar os campos.</p>
+<p>Clique em Ajustar campos. Aqui você muda a ordem, o nome exibido e o tipo de cada campo. Escolha Município. O Capivara já preencheu as opções com os municípios que achou na planilha. Mais tarde, quando entrarem entrevistas de outros lugares, o botão Detectar opções a partir dos dados acrescenta os novos nomes à lista.</p>
+<p>No próximo vídeo, vamos ver a aba Projeto: buscar, filtrar e agir em várias entradas de uma vez. O manual completo está no menu Ajuda, ou na tecla F1.</p>
+</details>
+</article>
+</section>
+
+<footer>
+  Capivara 2 · Projeto <strong>Policronias do Presente</strong> · Universidade do Estado de Santa Catarina (UDESC) ·
+  Walderez Ramalho · <a href="../">Página de download</a>
+</footer>
+
+</div>
+</body>
+</html>
