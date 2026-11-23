@@ -81,6 +81,12 @@
   .ilustra .bt { border: 1px solid var(--fio); padding: 6px 14px; background: var(--cartao); }
   .legenda { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--tinta2); }
 
+  .etapas { margin: 8px 0 14px; padding-left: 22px; } .etapas li { margin-bottom: 6px; }
+  .fotos { display: flex; flex-wrap: wrap; gap: 14px; margin: 12px 0 16px; align-items: flex-start; }
+  .fotos figure { margin: 0; }
+  .fotos img { display: block; width: auto; max-width: 100%; height: auto; max-height: 310px; border: 1px solid var(--fio); }
+  .fotos figcaption { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--tinta2); margin-top: 4px; max-width: 30ch; }
+
   /* Blocos */
   .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
   .cartao { background: var(--cartao); border: 1px solid var(--fio); padding: 18px 20px; }
@@ -116,38 +122,47 @@
 <section id="instalar">
   <p class="rotulo">Instalação</p>
   <h2>Instalar em quatro passos</h2>
-  <p>Não é preciso instalar mais nada antes (nem Python, nem outros programas). O Windows vai mostrar um ou dois
-    avisos no caminho: eles são esperados, e abaixo explicamos o que clicar.</p>
+  <p>O Windows vai mostrar alguns avisos no caminho, de aparência assustadora. Eles são esperados, e abaixo
+    explicamos o que clicar em cada um.</p>
 
   <div class="passo"><div class="num">1</div><div>
     <h3>Baixe o instalador</h3>
     <p>Clique em <strong>Baixar para Windows</strong>, no alto desta página. O arquivo se chama
       <code>Capivara2_Instalador.exe</code> e vai para a pasta <strong>Downloads</strong>.</p>
     <div class="aviso">
-      <p><strong>Se o navegador avisar</strong> que o arquivo “não é baixado com frequência” ou “pode ser
-        perigoso”:</p>
-      <p>No <strong>Edge</strong>: passe o mouse sobre o aviso, clique nos três pontinhos
-        <span class="clique">Manter</span>, depois <span class="clique">Mostrar mais</span> e
-        <span class="clique">Manter mesmo assim</span>.<br>
-        No <strong>Chrome</strong>: clique em <span class="clique">Manter</span> (ou
-        <span class="clique">Baixar arquivo suspeito</span>).</p>
+      <p><strong>Se o navegador avisar</strong> que o arquivo “normalmente não é baixado” ou “pode ser
+        perigoso”, ele não está sendo bloqueado: só pede a sua confirmação. No <strong>Edge</strong>:</p>
+      <ol class="etapas">
+        <li>No painel de downloads, passe o mouse sobre o aviso e clique nos <strong>três pontinhos</strong>.</li>
+        <li>Escolha <span class="clique">Manter</span>.</li>
+        <li>Na janela seguinte (“Verifique se você confia…”), clique na <strong>setinha ao lado de “Excluir”</strong>
+          e escolha <span class="clique">Manter mesmo assim</span>. Cuidado: o botão azul principal é o de excluir.</li>
+      </ol>
+      <div class="fotos">
+        <figure><img src="imagens/edge-1-downloads.png" alt="Painel de downloads do Edge com o aviso de que o arquivo normalmente não é baixado" width="450" height="221" loading="lazy"><figcaption>1. O aviso no painel de downloads</figcaption></figure>
+        <figure><img src="imagens/edge-2-manter.png" alt="Menu dos três pontinhos do Edge, com a opção Manter destacada" width="325" height="263" loading="lazy"><figcaption>2. Menu dos três pontinhos: Manter</figcaption></figure>
+        <figure><img src="imagens/edge-3-manter-mesmo-assim.png" alt="Janela do Edge pedindo confirmação, com o menu da seta ao lado de Excluir mostrando Manter mesmo assim" width="441" height="583" loading="lazy"><figcaption>3. Seta ao lado de Excluir: Manter mesmo assim</figcaption></figure>
+      </div>
+      <p>No <strong>Chrome</strong>, procure a seta ao lado de <span class="clique">Descartar</span> (ou o botão
+        <span class="clique">Manter</span>), e confirme em <span class="clique">Manter mesmo assim</span>
+        se pedir.</p>
+      <p><strong>O que você vê pode ser um pouco diferente.</strong> Os textos e a posição dos botões mudam conforme o
+        navegador, a versão dele e o seu Windows, e às vezes o aviso nem aparece. Se o seu for diferente, procure uma
+        opção de manter ou de baixar mesmo assim, e confira que o arquivo veio desta página.</p>
     </div>
   </div></div>
 
   <div class="passo"><div class="num">2</div><div>
     <h3>Abra o instalador e passe pelo aviso do Windows</h3>
-    <p>Dê dois cliques no arquivo baixado. O Windows deve mostrar uma janela azul dizendo
-      <strong>“O Windows protegeu o computador”</strong>, sem nenhum botão para continuar. Não feche a janela:</p>
-    <div class="ilustra" role="img" aria-label="Ilustração: na janela de aviso, clique primeiro em Mais informações e depois em Executar assim mesmo.">
-      <div class="faixa"><strong>O Windows protegeu o computador</strong>
-        O SmartScreen impediu a inicialização de um aplicativo não reconhecido…<br>
-        <span class="link alvo">Mais informações</span></div>
-      <div class="meio">Aplicativo: Capivara2_Instalador.exe<br>Editor: Editor desconhecido</div>
-      <div class="rodape"><span class="bt alvo">Executar assim mesmo</span><span class="bt">Não executar</span></div>
+    <p>Dê dois cliques no arquivo baixado. O Windows pode mostrar uma janela de aviso dizendo
+      <strong>“O Windows protegeu o computador”</strong>, só com o botão <em>Não executar</em>. Não feche a janela:</p>
+    <div class="fotos">
+      <figure><img src="imagens/windows-1-protegeu.png" alt="Janela O Windows protegeu o computador, só com o botão Não executar e o link Mais informações" width="662" height="618" loading="lazy"><figcaption>1. Clique em “Mais informações”</figcaption></figure>
+      <figure><img src="imagens/windows-2-executar.png" alt="A mesma janela depois de Mais informações, agora com o botão Executar assim mesmo" width="663" height="627" loading="lazy"><figcaption>2. Agora clique em “Executar assim mesmo”</figcaption></figure>
     </div>
-    <p class="legenda">Ilustração simplificada · os contornos marcam onde clicar</p>
     <p>Clique em <span class="clique">Mais informações</span> (o texto sublinhado). Aparece então o botão
-      <span class="clique">Executar assim mesmo</span>: clique nele.</p>
+      <span class="clique">Executar assim mesmo</span>: clique nele. Nunca clique em <em>Não executar</em>, que
+      cancela a instalação.</p>
   </div></div>
 
   <div class="passo"><div class="num">3</div><div>
@@ -166,13 +181,25 @@
 </section>
 
 <section id="aviso">
-  <p class="rotulo">Sobre o aviso</p>
-  <h2>Por que o Windows mostra esse aviso?</h2>
-  <p>O Windows avisa sobre qualquer programa que não tenha uma <strong>assinatura digital</strong>, um certificado
-    comprado de uma empresa e renovado todo ano. O Capivara é um projeto acadêmico gratuito e, por enquanto, não tem
-    esse certificado. O aviso quer dizer apenas “não sei quem fez este programa”, e não que o programa seja perigoso.</p>
+  <p class="rotulo">Sobre os avisos</p>
+  <h2>Por que o Windows e o navegador mostram esses avisos?</h2>
+  <p>Há dois filtros diferentes, e os dois funcionam do mesmo jeito: não analisam o que o programa faz, só
+    <strong>perguntam se muita gente já baixou e usou aquele arquivo</strong>.</p>
+  <ul class="lista">
+    <li><strong>No navegador</strong> (Edge, Chrome etc.): consulta a reputação do arquivo na hora do download.
+      É daí que vem o “normalmente não é baixado”.</li>
+    <li><strong>No Windows</strong> (SmartScreen): confere de novo quando você abre o instalador. É daí que vem o
+      “O Windows protegeu o computador” e o “Fornecedor desconhecido”.</li>
+  </ul>
+  <p>O Capivara é um projeto acadêmico gratuito, novo e com poucos downloads, e não tem a <strong>assinatura
+    digital</strong> (um certificado pago a uma empresa e renovado todo ano). Sem isso, qualquer programa novo
+    cai no aviso. Ele quer dizer apenas “ainda não conheço este programa”, e não que o programa seja perigoso.</p>
+  <p><strong>Por que o aviso muda de um computador para outro?</strong> Porque depende do navegador e da versão
+    dele, da versão do Windows, do antivírus instalado, das regras da sua instituição e da reputação do arquivo
+    naquele dia: conforme mais pessoas baixam e instalam, alguns avisos podem até sumir. Por isso um colega pode ver
+    dois avisos e você, quatro, ou o contrário.</p>
   <p>O Capivara não envia suas fontes para a internet: tudo fica no seu computador ou na pasta de nuvem que você
-    escolher. O único acesso à internet que o programa faz é o de arquivar uma página da web, e só quando você pedir.</p>
+    escolher. O programa não acessa a internet.</p>
   <div class="aviso">
     <p><strong>Computador da universidade ou do trabalho sem o botão “Executar assim mesmo”?</strong> Nesses
       computadores, quem decide o que pode ser instalado é o setor de informática. Envie a eles o link desta
